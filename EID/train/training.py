@@ -192,4 +192,5 @@ if __name__ == "__main__":
                    ]:
         utils.create_directories(feature)
         params = utils.get_optimal_params(feature)
-        main(feature, params)
+        print(params)
+        # main(feature, params)
