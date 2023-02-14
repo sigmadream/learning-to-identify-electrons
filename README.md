@@ -16,13 +16,43 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> exit()
 ```
 
-## Python 설정(for macOS Intel/M1/M2)
+## M1/M2 기반 macOS에서 Python 설치
+- [ ] TODO. 비디오 강의 작성
 
-// TODO
+- 기존에 사용하던 Python은 삭제
+```
+$ brew uninstall python@3.x
+```
+- `xcode` 개발자 도구 설치 
+```
+$ xcode-select --install
+```
+- `miniconda` [다운로드](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh) 후 설치(설치 후 터미널 재실행)
+```
+$ bash ./Miniconda3-latest-MacOSX-arm64.sh -b -p $HOME/miniconda
+```
+- 가상환경 만들기
+```
+$ conda create -n tf python=3.9
+$ conda activate tf
+```
+- 텐서플로우 설치
+```
+$ (tf) conda install -c apple tensorflow-deps
+$ (tf) python -m pip install tensorflow-macos
+$ (tf) python -m pip install tensorflow-metal
+```
+- 설치 확인
+```
+$ python
+>>> import tensorflow
+>>> tensorflow.__version__
+```
 
 ## 필수 프로그램 설치
 
 ```
+$ (venv) python3 -m pip install -U pip setuptools wheel
 $ (venv) pip install jupyterlab
 $ (venv) pip install energyflow
 $ (venv) pip install pandas
