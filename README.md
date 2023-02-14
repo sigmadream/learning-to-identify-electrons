@@ -16,7 +16,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> exit()
 ```
 
-## M1/M2 기반 macOS에서 Python 설치 [YouTube 링크](https://www.youtube.com/watch?v=iqUEutQKd04)
+## M1/M2 기반 macOS에서 Python 설치 [(YouTube 링크)](https://www.youtube.com/watch?v=iqUEutQKd04)
 - M1/M2 기반 `macOS`(>= 13.x) 진행, macOS에서 지원하는 `Terminal`이나 자신이 사용하는 터미널 프로그램을 실행하여 진행하며, `brew`는 설치되어 있다고 가정
 
 - 0. Python 3.9 버전 사용시 필수 설치
@@ -150,5 +150,4 @@ $ (tutorials) jupyter-lab
 
 ## data
 
-* http://mlphysics.ics.uci.edu/data/2020_electron/에서 다운로드
-* 다운로드 받은 파일 3개(`data.h5`, `efps.h5`, `unscaled_data.h5`)를 data 폴더에 복사 또는 이동
+* [이 곳](http://mlphysics.ics.uci.edu/data/2020_electron/)에서 3개 파일(`data.h5`, `efps.h5`, `unscaled_data.h5`)을 다운로드 하시면 됩니다.
