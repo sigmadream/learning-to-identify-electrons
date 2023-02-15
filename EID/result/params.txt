@@ -1,0 +1,7 @@
+{'feature': 'hl', 'filters': 16, 'numConvBlocks': 1, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 5, 'units': 149, 'lr': 0.001, 'dp': 0.0019}
+{'feature': 'et_and_ht', 'filters': 47, 'numConvBlocks': 3, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 2, 'units': 146, 'lr': 0.0001, 'dp': 0.0}
+{'feature': 'et', 'filters': 117, 'numConvBlocks': 3, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 2, 'units': 160, 'lr': 0.0001, 'dp': 0.0}
+{'feature': 'ht', 'filters': 27, 'numConvBlocks': 2, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 2, 'units': 84, 'lr': 0.01, 'dp': 0.5}
+{'feature': 'et_and_ht_and_hl', 'filters': 34, 'numConvBlocks': 3, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 2, 'units': 154, 'lr': 0.0001, 'dp': 0.0}
+{'feature': 'mass', 'filters': 16, 'numConvBlocks': 1, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 3, 'units': 10, 'lr': 0.01, 'dp': 0.0}
+{'feature': 'hl_and_mass', 'filters': 16, 'numConvBlocks': 1, 'p': 0, 'optimizer': 'adam', 'epochs': 100, 'batchSize': 128, 'iso_positions': (), 'efp_positions': (), 'numLayers': 3, 'units': 109, 'lr': 0.0013, 'dp': 0.0}
