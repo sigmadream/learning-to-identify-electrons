@@ -42,13 +42,6 @@ def check_compression_errors(remove_broken=False):
 
 
 def efp_500():
-    # Comparing pairs of EFPs is slow with complete datasets
-    # So this function just generates a file with the first 500 events of each
-    # EFP with the corresponding EFP label
-
-    # We only care about either just et or just ht since the
-    # duplicates will be based on EFP number, kappa and beta.
-    # So we can just find duplicates in et and apply the rules to removing ht cases
     file_out = "data/processed/efp500.feather"
     existing_graphs = natsorted(glob.glob("data/efp/test/et_*.feather"))
     df0 = pd.DataFrame()
@@ -61,16 +54,10 @@ def efp_500():
 
 
 def dup_search():
-    # Get the first 500 entries for each EFP
     efp_500 = pd.read_feather("data/processed/efp500.feather")
-
-    # Get all EFP labels
     efp_cols = list(efp_500.columns.values)
-
-    # Get every combination of EFPs
     efp_pairs = list(itertools.combinations(efp_cols, 2))
 
-    # Loop through pairs and find any pairs with identical values
     duplicates = []
     t = tqdm(efp_pairs)
     for ix, (p1, p2) in enumerate(t):
@@ -79,22 +66,15 @@ def dup_search():
         if (efp1 == efp2).all():
             duplicates.append(str(p2))
 
-    # Take just the unique EFPs (i.e. remove duplicates from the efp_cols list)
     uniques = list(set(efp_cols) - set(duplicates))
-
-    # Remove 'et' label to generalize for both et and ht data types
     uniques = [x.split("et_")[-1] for x in uniques]
     uniques = pd.DataFrame({"efp": uniques})
-
-    # Output unique EFPs
     file_out = "data/processed/uniques.feather"
     uniques.to_feather(file_out)
 
-    # Remove 'et' label to generalize for both et and ht data types
     duplicates = [x.split("et_")[-1] for x in duplicates]
     duplicates = pd.DataFrame({"efp": duplicates})
 
-    # Output duplicate EFPs
     file_out = "data/processed/duplicates.feather"
     duplicates.to_feather(file_out)
 
@@ -120,7 +100,4 @@ def move_duplicates(move_dupes=False):
 
 if __name__ == "__main__":
     check_compression_errors()
-    # efp_500()
-    # dup_search()
-    # move_duplicates(move_dupes=False)
     print("Done!")

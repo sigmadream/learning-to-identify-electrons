@@ -32,15 +32,15 @@ paginate: true
 
 - [`ROOT`](https://root.cern/get_started/)라는 도구가 필요하지만, 해당 도구를 당장 이해하거나 배울 수 있는 방법이 없음
 ![bg fit right](./figure/figure19.png)
-- 도메인 지식(domain knowledge)가 없기 때문에 데이터에 대한 이해를 할 수 없음
+- 도메인 지식(domain knowledge)이 없기 때문에 데이터에 대한 이해를 할 수 없음
     - `et`, `ht`, `mass` 등
 
 ---
 ## 그럼 공대 방식으로 문제를 해결해보자.
 
-> 이 논문의 내용을 잠시 잊고, 제공된 코드를 통해서 '구조'를 먼저 학습하자.
+> 이 논문의 내용에 집중하는 것이 아니라, 제공된 코드를 통해서 '구조'를 먼저 파악하자.
 
-- 딥러닝 논문의 대표적인 구조 '데이터, 훈련, 평가' 중 데이터 관련 부분을 먼저 확인해보자.
+이러한 주장이 가능한 이유는 ~~(대부분의)~~ 딥러닝 논문은 '데이터, 훈련, 평가'로 구성되어 있고, 데이터에 대한 이해도가 논문에 제시된 훈련 모델을 이해하는데 많은 영향을 주기 때문.
 
 ---
 ## 데이터 관련 코드를 확인해보자.
@@ -145,4 +145,63 @@ imgForm += png_as_text.decode("utf-8")
 ```
 
 ---
+## 실제 `data.h5` 파일을 개별적인 파일로 풀어내면?
 
+```
+df = h5py.File("data/raw/data.h5", mode="r")
+dtypes = ["et", "ht"]
+splits = ["test", "train", "valid"]
+data_types = [(x, y) for x in dtypes for y in splits]
+```
+> 나머지 코드는 `src/01_generate_prep_data.py` 참고.
+
+---
+## pkl 파일은 뭔가요?
+
+- `pickle`은 문자/문자열 상태의 데이터가 아닌 파이썬 객체를 바이너리 파일로 저장하는 것으로 dictionary, list, tuple과 같은 형태로 필요한 부분을 저장할 때 활용
+
+- 일반 문자열을 사용하는 경우 필요한 부분을 전처리 과정을 통해서 파싱(parsing)해야 하지만, pickle은 이미 필요한 형태대로 저장이 되어 있기 때문에 훨씬 검색이 빠름
+
+- pickle module은 압축을 풀면서 관련 코드가 실행되기 때문에 보안에 매우 취약
+
+![bg fit right](./figure/figure21.png)
+
+---
+## Feather 파일
+![bg fit right](./figure/figure22.png)
+
+- Pandas 데이터 프레임을 파일형태로 저장하는 다양한 방식이 있는데, 대부분의 수업에선 CSV를 사용하지만, 거의 대부분의 연구자들은 `Feather`를 사용
+
+> Feather provides binary columnar serialization for data frames. It is designed to make reading and writing data frames efficient, and to make sharing data across data analysis languages easy. This initial version comes with bindings for python (written by Wes McKinney) and R (written by Hadley Wickham).
+
+---
+![bg fit](./figure/figure23.png)
+
+---
+## 도대체 왜 데이터를 이렇게 복잡하게 처리 하는걸까?
+- 일반적으로 많은 연구자들의 출판물에선 딥러닝의 레이어를 제공하는 경우가 존재
+    - https://arxiv.org/abs/1409.1556
+- 데이터가 공개되어 있다고 가정했을 때 전처리의 경우 컴퓨팅 환경을 포함해서 운영체제까지 광범위하게 영향을 미치는데, 전처리 과정을 외부에 공개할 때 동료평가자들이 해당 코드를 완벽하게 실행시킬 수 있을지에 대해선 다들 의문이 있음
+- 따라서 전처리된 결과를 '손실'과 '유실'없이 대부분의 플랫폼에서 사용할 수 있도록 배포하는 것을 연구자들이 선호함
+    - 또 다른 예로 `NetCDF(Network Common Data Form)`은 배열 지향적인 과학 데이터를 생성, 액세스 및 공유하도록 지원하는 소프트웨어 라이브러리 및 시스템 독립적인 데이터 형식의 집합, 기상 데이터의 표준으로 활용
+
+---
+## 중복 데이터 제거
+
+> `src/03_identify_duplicate_efp.py`를 참고.
+
+---
+## 시각화
+
+> `src/04_04_generate_efp_graphs.py`를 참고.
+
+---
+![bg fit](./figure/figure24.png)
+
+---
+## EnergyFlow - 입자 물리학 도구 모음
+- https://energyflow.network
+- Komiske, Patrick T., Eric M. Metodiev, and Jesse Thaler. "Energy flow polynomials: A complete linear basis for jet substructure." Journal of High Energy Physics 2018.4 (2018): 1-54.
+
+---
+## 그렇다면 이제 남은 것은 CNN 구조!

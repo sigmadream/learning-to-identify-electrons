@@ -136,11 +136,11 @@ $ (venv) pip install pandas
 $ (venv) pip install scikit-learn
 $ (venv) pip install seaborn
 $ (venv) pip install tensorflow # M1/M2 사용자 제외
-# 추가
 $ (venv) pip install tqdm
 $ (venv) pip install pyarrow
 $ (venv) pip install igraph
 $ (venv) pip install natsort
+$ (venv) pip install pycairo
 $ (venv) pip freeze > requirements.txt
 ```
 
