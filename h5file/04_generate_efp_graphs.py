@@ -1,5 +1,3 @@
-#! /home/tfaucett/miniconda3/envs/tf/bin/python
-
 import energyflow as ef
 import igraph
 import string
@@ -55,16 +53,6 @@ def generate_efp_graphs():
             plot_graph(graph, n, d, k, f"graphs/pdf/efp_{n}_{d}_{k}.pdf")
             plot_graph(graph, n, d, k, f"graphs/png/efp_{n}_{d}_{k}.png")
             plot_graph(graph, n, d, k, f"graphs/eps/efp_{n}_{d}_{k}.eps")
-
-        # chrom_4 = ef.EFPSet("d<=8", "p==1", "c==4")
-        # graphs = chrom_4.graphs()
-        # for efp_ix, graph in enumerate(graphs):
-        #     n, e, d, v, k, c, p, h = chrom_4.specs[efp_ix]
-        #     pdf_file = f"graphs/pdf/efp_{n}_{d}_{k}.pdf"
-        #     plot_graph(graph, n, d, k, pdf_file)
-        #     png_file = f"graphs/png/efp_{n}_{d}_{k}.pdf"
-        #     plot_graph(graph, n, d, k, png_file)
-
 
 if __name__ == "__main__":
     alphabet_string = string.ascii_lowercase
