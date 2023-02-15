@@ -1,0 +1,281 @@
+Model: "hl"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ flat_0 (InputLayer)         [(None, 7)]               0
+
+ dense (Dense)               (None, 149)               1192
+
+ dropout (Dropout)           (None, 149)               0
+
+ dense_1 (Dense)             (None, 149)               22350
+
+ dropout_1 (Dropout)         (None, 149)               0
+
+ dense_2 (Dense)             (None, 149)               22350
+
+ dropout_2 (Dropout)         (None, 149)               0
+
+ dense_3 (Dense)             (None, 149)               22350
+
+ dropout_3 (Dropout)         (None, 149)               0
+
+ dense_4 (Dense)             (None, 149)               22350
+
+ dense_5 (Dense)             (None, 1)                 150
+
+=================================================================
+Total params: 90,742
+Trainable params: 90,742
+Non-trainable params: 0
+_________________________________________________________________
+
+
+Model: "et_and_ht
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to
+==================================================================================================
+ image_0 (InputLayer)           [(None, 31, 31, 1)]  0           []
+
+ image_1 (InputLayer)           [(None, 32, 32, 1)]  0           []
+
+ conv2d (Conv2D)                (None, 31, 31, 47)   470         ['image_0[0][0]']
+
+ conv2d_6 (Conv2D)              (None, 32, 32, 47)   470         ['image_1[0][0]']
+
+ conv2d_1 (Conv2D)              (None, 31, 31, 47)   19928       ['conv2d[0][0]']
+
+ conv2d_7 (Conv2D)              (None, 32, 32, 47)   19928       ['conv2d_6[0][0]']
+
+ max_pooling2d (MaxPooling2D)   (None, 16, 16, 47)   0           ['conv2d_1[0][0]']
+
+ max_pooling2d_3 (MaxPooling2D)  (None, 16, 16, 47)  0           ['conv2d_7[0][0]']
+
+ conv2d_2 (Conv2D)              (None, 16, 16, 47)   19928       ['max_pooling2d[0][0]']
+
+ conv2d_8 (Conv2D)              (None, 16, 16, 47)   19928       ['max_pooling2d_3[0][0]']
+
+ conv2d_3 (Conv2D)              (None, 16, 16, 47)   19928       ['conv2d_2[0][0]']
+
+ conv2d_9 (Conv2D)              (None, 16, 16, 47)   19928       ['conv2d_8[0][0]']
+
+ max_pooling2d_1 (MaxPooling2D)  (None, 8, 8, 47)    0           ['conv2d_3[0][0]']
+
+ max_pooling2d_4 (MaxPooling2D)  (None, 8, 8, 47)    0           ['conv2d_9[0][0]']
+
+ conv2d_4 (Conv2D)              (None, 8, 8, 47)     19928       ['max_pooling2d_1[0][0]']
+
+ conv2d_10 (Conv2D)             (None, 8, 8, 47)     19928       ['max_pooling2d_4[0][0]']
+
+ conv2d_5 (Conv2D)              (None, 8, 8, 47)     19928       ['conv2d_4[0][0]']
+
+ conv2d_11 (Conv2D)             (None, 8, 8, 47)     19928       ['conv2d_10[0][0]']
+
+ max_pooling2d_2 (MaxPooling2D)  (None, 4, 4, 47)    0           ['conv2d_5[0][0]']
+
+ max_pooling2d_5 (MaxPooling2D)  (None, 4, 4, 47)    0           ['conv2d_11[0][0]']
+
+ flatten (Flatten)              (None, 752)          0           ['max_pooling2d_2[0][0]']
+
+ flatten_1 (Flatten)            (None, 752)          0           ['max_pooling2d_5[0][0]']
+
+ concatenate (Concatenate)      (None, 1504)         0           ['flatten[0][0]','flatten_1[0][0]']
+
+ dense (Dense)                  (None, 146)          219730      ['concatenate[0][0]']
+
+ dense_1 (Dense)                (None, 146)          21462       ['dense[0][0]']
+
+ dense_2 (Dense)                (None, 1)            147         ['dense_1[0][0]']
+
+==================================================================================================
+Total params: 441,559
+Trainable params: 441,559
+Non-trainable params: 0
+__________________________________________________________________________________________________
+
+Model: "et"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ image_0 (InputLayer)        [(None, 31, 31, 1)]       0
+
+ conv2d (Conv2D)             (None, 31, 31, 117)       1170
+
+ conv2d_1 (Conv2D)           (None, 31, 31, 117)       123318
+
+ max_pooling2d (MaxPooling2D  (None, 16, 16, 117)      0
+ )
+
+ conv2d_2 (Conv2D)           (None, 16, 16, 117)       123318
+
+ conv2d_3 (Conv2D)           (None, 16, 16, 117)       123318
+
+ max_pooling2d_1 (MaxPooling  (None, 8, 8, 117)        0
+ 2D)
+
+ conv2d_4 (Conv2D)           (None, 8, 8, 117)         123318
+
+ conv2d_5 (Conv2D)           (None, 8, 8, 117)         123318
+
+ max_pooling2d_2 (MaxPooling  (None, 4, 4, 117)        0
+ 2D)
+
+ flatten (Flatten)           (None, 1872)              0
+
+ dense (Dense)               (None, 160)               299680
+
+ dense_1 (Dense)             (None, 160)               25760
+
+ dense_2 (Dense)             (None, 1)                 161
+
+=================================================================
+Total params: 943,361
+Trainable params: 943,361
+Non-trainable params: 0
+_________________________________________________________________
+
+Model: "ht"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ image_0 (InputLayer)        [(None, 32, 32, 1)]       0
+
+ conv2d (Conv2D)             (None, 32, 32, 27)        270
+
+ conv2d_1 (Conv2D)           (None, 32, 32, 27)        6588
+
+ max_pooling2d (MaxPooling2D  (None, 16, 16, 27)       0
+ )
+
+ conv2d_2 (Conv2D)           (None, 16, 16, 27)        6588
+
+ conv2d_3 (Conv2D)           (None, 16, 16, 27)        6588
+
+ max_pooling2d_1 (MaxPooling  (None, 8, 8, 27)         0
+ 2D)
+
+ flatten (Flatten)           (None, 1728)              0
+
+ dense (Dense)               (None, 84)                145236
+
+ dropout (Dropout)           (None, 84)                0
+
+ dense_1 (Dense)             (None, 84)                7140
+
+ dense_2 (Dense)             (None, 1)                 85
+
+=================================================================
+Total params: 172,495
+Trainable params: 172,495
+Non-trainable params: 0
+_________________________________________________________________
+
+Model: "et_and_ht_and_hl"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to
+==================================================================================================
+ image_0 (InputLayer)           [(None, 31, 31, 1)]  0           []
+
+ image_1 (InputLayer)           [(None, 32, 32, 1)]  0           []
+
+ conv2d (Conv2D)                (None, 31, 31, 34)   340         ['image_0[0][0]']
+
+ conv2d_6 (Conv2D)              (None, 32, 32, 34)   340         ['image_1[0][0]']
+
+ conv2d_1 (Conv2D)              (None, 31, 31, 34)   10438       ['conv2d[0][0]']
+
+ conv2d_7 (Conv2D)              (None, 32, 32, 34)   10438       ['conv2d_6[0][0]']
+
+ max_pooling2d (MaxPooling2D)   (None, 16, 16, 34)   0           ['conv2d_1[0][0]']
+
+ max_pooling2d_3 (MaxPooling2D)  (None, 16, 16, 34)  0           ['conv2d_7[0][0]']
+
+ conv2d_2 (Conv2D)              (None, 16, 16, 34)   10438       ['max_pooling2d[0][0]']
+
+ conv2d_8 (Conv2D)              (None, 16, 16, 34)   10438       ['max_pooling2d_3[0][0]']
+
+ conv2d_3 (Conv2D)              (None, 16, 16, 34)   10438       ['conv2d_2[0][0]']
+
+ conv2d_9 (Conv2D)              (None, 16, 16, 34)   10438       ['conv2d_8[0][0]']
+
+ max_pooling2d_1 (MaxPooling2D)  (None, 8, 8, 34)    0           ['conv2d_3[0][0]']
+
+ max_pooling2d_4 (MaxPooling2D)  (None, 8, 8, 34)    0           ['conv2d_9[0][0]']
+
+ conv2d_4 (Conv2D)              (None, 8, 8, 34)     10438       ['max_pooling2d_1[0][0]']
+
+ conv2d_10 (Conv2D)             (None, 8, 8, 34)     10438       ['max_pooling2d_4[0][0]']
+
+ conv2d_5 (Conv2D)              (None, 8, 8, 34)     10438       ['conv2d_4[0][0]']
+
+ conv2d_11 (Conv2D)             (None, 8, 8, 34)     10438       ['conv2d_10[0][0]']
+
+ max_pooling2d_2 (MaxPooling2D)  (None, 4, 4, 34)    0           ['conv2d_5[0][0]']
+
+ max_pooling2d_5 (MaxPooling2D)  (None, 4, 4, 34)    0           ['conv2d_11[0][0]']
+
+ flat_2 (InputLayer)            [(None, 7)]          0           []
+
+ flatten (Flatten)              (None, 544)          0           ['max_pooling2d_2[0][0]']
+
+ flatten_1 (Flatten)            (None, 544)          0           ['max_pooling2d_5[0][0]']
+
+ concatenate (Concatenate)      (None, 1095)         0           ['flat_2[0][0]',
+                                                                  'flatten[0][0]',
+                                                                  'flatten_1[0][0]']
+
+ dense (Dense)                  (None, 154)          168784      ['concatenate[0][0]']
+
+ dense_1 (Dense)                (None, 154)          23870       ['dense[0][0]']
+
+ dense_2 (Dense)                (None, 1)            155         ['dense_1[0][0]']
+
+==================================================================================================
+Total params: 297,869
+Trainable params: 297,869
+Non-trainable params: 0
+__________________________________________________________________________________________________
+
+Model: "mass"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ flat_0 (InputLayer)         [(None, 1)]               0
+
+ dense (Dense)               (None, 10)                20
+
+ dense_1 (Dense)             (None, 10)                110
+
+ dense_2 (Dense)             (None, 10)                110
+
+ dense_3 (Dense)             (None, 1)                 11
+
+=================================================================
+Total params: 251
+Trainable params: 251
+Non-trainable params: 0
+_________________________________________________________________
+
+Model: "hl_and_mass"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to
+==================================================================================================
+ flat_0 (InputLayer)            [(None, 7)]          0           []
+
+ flat_1 (InputLayer)            [(None, 1)]          0           []
+
+ concatenate (Concatenate)      (None, 8)            0           ['flat_0[0][0]','flat_1[0][0]']
+
+ dense (Dense)                  (None, 109)          981         ['concatenate[0][0]']
+
+ dense_1 (Dense)                (None, 109)          11990       ['dense[0][0]']
+
+ dense_2 (Dense)                (None, 109)          11990       ['dense_1[0][0]']
+
+ dense_3 (Dense)                (None, 1)            110         ['dense_2[0][0]']
+
+==================================================================================================
+Total params: 25,071
+Trainable params: 25,071
+Non-trainable params: 0
+__________________________________________________________________________________________________
