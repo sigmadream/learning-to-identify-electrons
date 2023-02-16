@@ -8,6 +8,7 @@ import energyflow as ef
 def generate_prep_data():
     # jet-images 파일 불러오기
     df = h5py.File("data/raw/data.h5", mode="r")
+    #dtypes = ["images_bg", "images_signal", "iso_bg", "iso_signal", "weights_bg", "weights_signal"]
     dtypes = ["et", "ht"]
     splits = ["test", "train", "valid"]
     data_types = [(x, y) for x in dtypes for y in splits]

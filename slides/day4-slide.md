@@ -128,19 +128,21 @@ model = tf.keras.Sequential([
 ### 2.3.b TF에서 모델을 작성하는 3가지 기본 구조
 - Functional
 ```
+# input layer
+inputs = tf.keras.Input(shape = (28, 28, 1))
+# 1. filter(kernel channel) = 32, kernel = 3, relu, conv2d layer
+x = tf.keras.layers.Conv2D(32, 3, activation = 'relu')(inputs)
+# 2. filter = 64, kernel = 3, relu, conv2d layer
+x = tf.keras.layers.Conv2D(64, 3, activation = 'relu')(x)
+# 3. flatten layer
+x = tf.keras.layers.Flatten()(x)
+# 4. output = 128 nodes, relu, fully-connected dense layer
+x = tf.keras.layers.Dense(128, activation = 'relu')(x)
+# 5. ouput = class (data), relu, fully-connected dense layer
+outputs = tf.keras.layers.Dense(10, activation = 'softmax')(x)
+
 # build a model (5 layers)
-model = tf.keras.Sequential([
-    # 1. filter(kernel channel) = 32, kernel = 3, relu, conv2d layer
-    tf.keras.layers.Conv2D(32, 3, activation='relu'),
-    # 2. filter = 64, kernel = 3, relu, conv2d layer
-    tf.keras.layers.Conv2D(64, 3, activation='relu'),
-    # 3. flatten layer
-    tf.keras.layers.Flatten(),
-    # 4. output = 128 nodes, relu, fully-connected dense layer
-    tf.keras.layers.Dense(128, activation='relu'),
-    # 5. ouput = class (data), relu, fully-connected dense layer
-    tf.keras.layers.Dense(10, activation='softmax')
-])
+model = tf.keras.Model(inputs = inputs, outputs = outputs)
 ```
 
 ---
