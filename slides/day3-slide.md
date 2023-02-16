@@ -231,6 +231,3 @@ data_types = [(x, y) for x in dtypes for y in splits]
 ### 2.14 저건 어떻게 "EnergyFlow - 입자 물리학 도구 모음"를 사용
 - https://energyflow.network
 - Komiske, Patrick T., Eric M. Metodiev, and Jesse Thaler. "Energy flow polynomials: A complete linear basis for jet substructure." Journal of High Energy Physics 2018.4 (2018): 1-54.
-
----
-## 이제 남은 것은 CNN 구조!

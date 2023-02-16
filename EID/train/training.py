@@ -94,12 +94,14 @@ def create_model(params):
             layer=Dropout(params['dp'])(layer)
     layer=Dense(1, activation='sigmoid')(layer)
 
+    print(layer)
+
     model=Model(all_inputs, layer)
 
     if params['optimizer'] == 'adam':
         optimizer = keras.optimizers.Adam(lr=params['lr'])   
     model.compile(loss=keras.losses.binary_crossentropy, optimizer=optimizer)
-    #model.summary()
+    model.summary()
     my_model = model
     return my_model
 
@@ -193,4 +195,5 @@ if __name__ == "__main__":
         utils.create_directories(feature)
         params = utils.get_optimal_params(feature)
         print(params)
-        # main(feature, params)
+        main(feature, params)
+
